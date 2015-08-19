@@ -1,0 +1,17 @@
+{
+    "name": "pmvc-plugin/form",
+    "description": "form utility",
+    "type": "library",
+    "keywords": ["form", "pmvc", "plug-in"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Hill",
+            "email": "hill@kimo.com"
+        }
+    ],
+    "require": {
+        "pmvc/pmvc": "*"
+    },
+    "minimum-stability": "dev"
+}
