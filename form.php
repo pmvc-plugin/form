@@ -12,28 +12,16 @@ class form extends \PMVC\PlugIn
 
     public function init()
     {
-        $this['error'] = array();
     }
 
-    public function add($params)
+    public function add($bool, $message=null, $callBack=null)
     {
-        $params = \PMVC\mergeDefault(
-            $this->getDefault(),
-            $params
+        $this->check[] = array(
+            'bool'=>$bool,
+            'message'=>$message,
+            'callBack'=>$callBack
         );
-        $this->check[] = $params;
-        return $params['bool'];
-    }
-
-    public function getDefault()
-    {
-        return array(
-            'bool'=>false,
-            'key'=>'',
-            'message'=>'',
-            'url'=>'',
-            'callBack'=>null
-        );
+        return $bool;
     }
 
     public function validate()
@@ -43,11 +31,7 @@ class form extends \PMVC\PlugIn
             if (!$check['bool']) {
                 $bool = false;
                 if (!empty($check['message'])) {
-                    trigger_error($check['message'],E_USER_ERROR);
-                    $this['error'][$check['key']] = $check['message'];
-                }
-                if (!empty($check['url'])) {
-                    $this['redirect'] = $check['url']; 
+                    trigger_error($check['message'], E_USER_ERROR);
                 }
                 if (!empty($check['callBack'])) {
                     call_user_func_array(
