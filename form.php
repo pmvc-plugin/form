@@ -44,6 +44,11 @@ class form extends \PMVC\PlugIn
         return $bool;
     }
 
+    public function getCheckList()
+    {
+        return $this->check;
+    }
+
     public function __toString()
     {
         return (string)$this->validate();
