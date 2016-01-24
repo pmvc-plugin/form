@@ -8,11 +8,7 @@ ${_INIT_CONFIG}[_CLASS] = __NAMESPACE__.'\form';
 class form extends \PMVC\PlugIn
 {
 
-    private $check;
-
-    public function init()
-    {
-    }
+    private $check = array();
 
     public function add($bool, $message=null, $callBack=null)
     {
