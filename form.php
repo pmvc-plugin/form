@@ -10,13 +10,14 @@ class form extends \PMVC\PlugIn
 
     private $check = array();
 
-    public function add($bool, $message=null, $callBack=null)
+    public function add($bool, $message=null, $callBack=null, $forward=null)
     {
-        $this->check[] = array(
+        $this->check[] = [
             'bool'=>$bool,
             'message'=>$message,
-            'callBack'=>$callBack
-        );
+            'callBack'=>$callBack,
+            'forward'=>$forward,
+        ];
         return $bool;
     }
 
@@ -34,6 +35,9 @@ class form extends \PMVC\PlugIn
                         $check['callBack'],
                         $check 
                     );
+                }
+                if (!empty($check['forward']) && defined('_ERROR_FORWARD')) {
+                    \PMVC\option('set', _ERROR_FORWARD, $check['forward']);
                 }
             }
         }
